@@ -1,0 +1,66 @@
+# --- Build y caché ---
+dist/
+.astro/
+.cache/
+*.tsbuildinfo
+
+# --- Dependencias ---
+node_modules/
+.pnpm-store/
+
+# --- Variables de entorno y secretos (nunca commitear) ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+secrets.*
+credentials*.json
+service-account*.json
+
+# --- Plataformas de deploy (config local y credenciales de CLI) ---
+.vercel/
+.netlify/
+.wrangler/
+.dev.vars
+.firebase/
+firebase-debug.log
+.amplify/
+amplify/team-provider-info.json
+.railway/
+.render/
+.fly/
+.kamal/secrets*
+
+# --- Logs ---
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Herramientas de agentes y testing ---
+.claude/settings.local.json
+.claude/worktrees/
+.playwright-mcp/
+playwright-report/
+test-results/
+coverage/
+
+# --- Sistema operativo ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- Editores ---
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+*.swp
+*.swo
+*~

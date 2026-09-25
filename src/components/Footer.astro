@@ -1,0 +1,153 @@
+---
+import { ArrowUpRight, Mail } from '@lucide/astro';
+import { site } from '../data/site';
+
+const socials = site.socials.filter((s): s is { label: string; href: string } => Boolean(s.href));
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <img src="/brand/piura-ai-logo-on-dark.svg" alt="Piura AI" width="117" height="48" class="logo" loading="lazy" />
+        <h2>Mantente al tanto</h2>
+        <p>Únete a nuestro grupo de WhatsApp y recibe noticias de talleres, eventos y oportunidades de la comunidad.</p>
+        <a href={site.joinUrl} class="btn btn--primary" target="_blank" rel="noopener">Unirse a la comunidad</a>
+      </div>
+
+      <div class="cols">
+        <div>
+          <h3>Contacto</h3>
+          <a href={`mailto:${site.email}`} class="mail"><Mail size={16} aria-hidden="true" /> {site.email}</a>
+        </div>
+        {
+          socials.length > 0 && (
+            <div>
+              <h3>Redes</h3>
+              <ul class="socials">
+                {socials.map((s) => (
+                  <li>
+                    <a href={s.href} target="_blank" rel="noopener">
+                      {s.label} <ArrowUpRight size={14} aria-hidden="true" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+      </div>
+    </div>
+
+    <div class="bottom">
+      <span>© {year} Piura AI. Piura, Perú.</span>
+      {site.codeOfConductUrl && <a href={site.codeOfConductUrl}>Código de conducta</a>}
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-navy);
+    color: var(--color-on-dark);
+    padding: 72px 0 32px;
+  }
+
+  .top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    padding-bottom: 40px;
+  }
+
+  .logo {
+    height: 48px;
+    width: auto;
+    margin-bottom: 32px;
+  }
+
+  h2 {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 10px 0 24px;
+    font-size: 14.5px;
+    color: var(--color-on-dark-muted);
+    max-width: 360px;
+  }
+
+  .cols {
+    display: grid;
+    gap: 28px;
+    align-content: start;
+    padding-top: 80px;
+  }
+
+  h3 {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .mail {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    color: var(--color-accent-soft);
+    font-size: 15px;
+  }
+
+  .mail:hover,
+  .socials a:hover,
+  .bottom a:hover {
+    color: #fff;
+  }
+
+  .socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+  }
+
+  .socials a {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    color: var(--color-on-dark);
+    font-size: 14px;
+  }
+
+  .bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    border-top: 1px solid rgb(255 255 255 / 0.15);
+    padding-top: 22px;
+    font-size: 13px;
+    color: #9fb0ba;
+  }
+
+  .bottom a {
+    color: #9fb0ba;
+  }
+
+  @media (max-width: 760px) {
+    .top {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .cols {
+      padding-top: 0;
+    }
+  }
+</style>

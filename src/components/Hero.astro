@@ -1,0 +1,158 @@
+---
+import { Image } from 'astro:assets';
+import { ArrowRight, MapPin } from '@lucide/astro';
+import eventPhoto from '../assets/images/primer-evento-piura-ai.jpg';
+import { site } from '../data/site';
+---
+
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <h1>Construyendo el futuro de la inteligencia artificial en Piura</h1>
+      <p class="hero__lead">
+        Comunidad tecnológica regional enfocada en el desarrollo responsable, la innovación práctica y la ética en IA.
+      </p>
+      <div class="hero__actions">
+        <a href={site.joinUrl} class="btn btn--primary" target="_blank" rel="noopener">Unirse a la comunidad</a>
+        <a href="#eventos" class="btn btn--outline">
+          Próximos eventos
+          <ArrowRight size={18} aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+
+    <figure class="hero__media">
+      <svg class="hero__waves" viewBox="0 0 480 120" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 40 C 90 0, 150 80, 240 40 S 400 0, 480 50" stroke="var(--color-navy)" stroke-opacity="0.14"></path>
+        <path d="M0 70 C 100 40, 160 100, 260 70 S 410 30, 480 90" stroke="var(--color-accent)" stroke-opacity="0.2"></path>
+        <path d="M0 100 C 110 80, 170 120, 270 95 S 420 70, 480 110" stroke="var(--color-navy)" stroke-opacity="0.1"></path>
+      </svg>
+      <div class="hero__photo">
+        <Image
+          src={eventPhoto}
+          width={1280}
+          alt="Integrantes y asistentes del primer evento de Piura AI posan juntos en INNOSPACE, Piura"
+          widths={[480, 720, 960, 1280]}
+          sizes="(max-width: 900px) 100vw, 560px"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+      <figcaption class="hero__caption">
+        <img src="/brand/piura-ai-mark.svg" alt="" width="36" height="36" />
+        <span>
+          <strong>Primer evento de Piura AI</strong>
+          <span class="hero__place"><MapPin size={14} aria-hidden="true" /> INNOSPACE, Piura</span>
+        </span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: clamp(48px, 8vw, 96px);
+    overflow-x: clip;
+  }
+
+  .hero__grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.12;
+    font-weight: 700;
+    color: var(--color-navy);
+    max-width: 580px;
+  }
+
+  .hero__lead {
+    margin-top: 24px;
+    font-size: 18px;
+    color: var(--color-muted);
+    max-width: 460px;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 36px;
+  }
+
+  .hero__media {
+    position: relative;
+    margin: 0;
+    padding-bottom: 40px;
+  }
+
+  .hero__waves {
+    position: absolute;
+    left: -8%;
+    right: -8%;
+    bottom: 0;
+    width: 116%;
+    height: 120px;
+    fill: none;
+    stroke-width: 2;
+    z-index: 0;
+  }
+
+  .hero__photo {
+    position: relative;
+    z-index: 1;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+    background: var(--color-surface);
+    aspect-ratio: 4 / 3;
+  }
+
+  .hero__photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero__caption {
+    position: absolute;
+    z-index: 2;
+    left: 20px;
+    bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px 12px 12px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 12px 28px -18px rgb(31 46 56 / 0.45);
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .hero__caption strong {
+    display: block;
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+
+  .hero__place {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--color-muted);
+    font-size: 13px;
+  }
+
+  @media (max-width: 900px) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+</style>

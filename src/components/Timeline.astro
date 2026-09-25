@@ -1,0 +1,145 @@
+---
+import { ArrowUpRight } from '@lucide/astro';
+import { timeline } from '../data/site';
+---
+
+<section id="trayectoria" class="section">
+  <div class="wrap grid">
+    <header>
+      <h2 class="section-title">Trayectoria</h2>
+      <p class="section-lead">
+        Desde su fundación, Piura AI ha construido una agenda activa de formación y encuentro para la comunidad tech regional.
+      </p>
+    </header>
+
+    <ol class="list">
+      {
+        timeline.map((item) => (
+          <li>
+            <span class="year">{item.year}</span>
+            <span class="track" aria-hidden="true">
+              <span class="dot" />
+              <span class="line" />
+            </span>
+            <div class="body">
+              <h3>{item.title}</h3>
+              <p>
+                {item.text}{' '}
+                {item.link && (
+                  <a href={item.link.href} target="_blank" rel="noopener">
+                    {item.link.label}
+                    <ArrowUpRight size={14} aria-hidden="true" />
+                  </a>
+                )}
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 64px;
+  }
+
+  .section-lead {
+    max-width: 380px;
+  }
+
+  .list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: 74px 20px 1fr;
+    column-gap: 20px;
+  }
+
+  .year {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--color-navy);
+    padding-top: 2px;
+    white-space: nowrap;
+  }
+
+  .track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    margin-top: 7px;
+  }
+
+  .line {
+    flex: 1;
+    width: 1.5px;
+    background: var(--color-line);
+    margin-top: 4px;
+  }
+
+  li:last-child .line {
+    display: none;
+  }
+
+  .body {
+    padding-bottom: 34px;
+  }
+
+  li:last-child .body {
+    padding-bottom: 0;
+  }
+
+  h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  p {
+    margin-top: 6px;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--color-muted);
+  }
+
+  p a {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    li {
+      grid-template-columns: 62px 12px 1fr;
+      column-gap: 14px;
+    }
+
+    .year {
+      font-size: 14px;
+    }
+  }
+</style>

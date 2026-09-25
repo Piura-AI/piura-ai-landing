@@ -1,0 +1,85 @@
+---
+import { GraduationCap, MapPin, Network, ShieldCheck } from '@lucide/astro';
+import { principles, type PrincipleIcon } from '../data/site';
+
+const icons: Record<PrincipleIcon, typeof ShieldCheck> = {
+  shield: ShieldCheck,
+  education: GraduationCap,
+  region: MapPin,
+  network: Network,
+};
+---
+
+<section id="manifiesto" class="section">
+  <div class="wrap">
+    <header class="intro">
+      <h2 class="section-title">Manifiesto y buenas prácticas</h2>
+      <p class="section-lead">Estos son los principios que guían cada taller, evento y alianza que organiza la comunidad.</p>
+    </header>
+
+    <ul class="grid">
+      {
+        principles.map((p) => {
+          const Icon = icons[p.icon];
+          return (
+            <li>
+              <Icon size={28} stroke-width={1.5} color="var(--color-navy)" aria-hidden="true" />
+              <span class="rule" />
+              <h3>{p.title}</h3>
+              <p>{p.text}</p>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .intro {
+    margin-bottom: 56px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .rule {
+    display: block;
+    width: 32px;
+    height: 3px;
+    background: var(--color-accent);
+    margin: 16px 0 14px;
+  }
+
+  h3 {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  p {
+    margin-top: 10px;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--color-muted);
+  }
+
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+      row-gap: 40px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
