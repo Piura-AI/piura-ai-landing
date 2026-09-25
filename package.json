@@ -11,7 +11,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "brand": "node scripts/build-brand.mjs",
-    "check": "astro check"
+    "check": "astro check",
+    "deploy": "astro build && wrangler deploy"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
@@ -27,6 +28,7 @@
     "@astrojs/check": "^0.9.10",
     "opentype.js": "^2.0.0",
     "sharp": "^0.35.4",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "wrangler": "^4.141.0"
   }
 }

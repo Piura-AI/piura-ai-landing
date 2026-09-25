@@ -9,7 +9,7 @@ Landing estática y SEO friendly de **Piura AI**, la comunidad de inteligencia a
 - **Fuentes self-hosted** con Fontsource: Space Grotesk (titulares) e IBM Plex Sans (cuerpo), solo subset latino.
 - **Imágenes** optimizadas con `astro:assets` (`<Image />`, WebP y `srcset`). Las fuentes originales viven en `src/assets/`.
 - **SEO:** `@astrojs/sitemap`, `robots.txt` generado (`src/pages/robots.txt.ts`), canonical, Open Graph, Twitter Card y JSON-LD `Organization` en `src/layouts/BaseLayout.astro`.
-- **Deploy:** Vercel (o similar) como sitio estático; no hace falta adapter. Dominio de producción: `https://piura-ai.org` (valor por defecto de `site` en `astro.config.mjs`). La variable de entorno `SITE_URL` lo sobreescribe si hace falta; canonical, OG, sitemap y robots se derivan de ahí.
+- **Deploy:** Cloudflare Workers con archivos estáticos (`wrangler.jsonc`, `assets.directory: ./dist`); no hace falta adapter ni código de Worker. `npm run deploy` compila y publica. `www` redirige al dominio principal con una regla de Cloudflare. El dominio está en GoDaddy (cuenta de Juan Alberto) con DNS delegado a Cloudflare; el correo es Zoho Mail. Dominio de producción: `https://piura-ai.org` (valor por defecto de `site` en `astro.config.mjs`). La variable de entorno `SITE_URL` lo sobreescribe si hace falta; canonical, OG, sitemap y robots se derivan de ahí.
 
 ## Comandos
 
@@ -20,6 +20,7 @@ npm run check      # astro check (tipos y diagnósticos): debe quedar en 0 error
 npm run build      # genera dist/
 npm run preview    # sirve dist/
 npm run brand      # regenera logos, favicons y OG image desde brand/source/
+npm run deploy     # astro build + wrangler deploy a Cloudflare
 ```
 
 Después de agregar o cambiar integraciones, correr `npx astro sync`.
@@ -90,4 +91,4 @@ Instaladas a nivel proyecto en `.claude/skills/` (bloqueadas en `skills-lock.jso
 - Componentes: https://docs.astro.build/en/basics/astro-components/
 - Imágenes: https://docs.astro.build/en/guides/images/
 - Estilos: https://docs.astro.build/en/guides/styling/
-- Deploy en Vercel: https://docs.astro.build/en/guides/deploy/vercel/
+- Deploy en Cloudflare: https://docs.astro.build/en/guides/deploy/cloudflare/

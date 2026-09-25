@@ -41,6 +41,7 @@ El sitio queda disponible en `http://localhost:4321`.
 | `npm run preview` | Sirve `dist/` localmente para revisar el build                  |
 | `npm run check`   | Revisa tipos y errores de Astro (debe quedar en 0 errores)      |
 | `npm run brand`   | Regenera logos, favicons y la imagen para redes (Open Graph)    |
+| `npm run deploy`  | Compila y publica en Cloudflare Workers                         |
 
 ## Cómo editar el contenido
 
@@ -107,13 +108,20 @@ El sitio incluye título y descripción, URL canónica, etiquetas Open Graph y T
 
 ## Despliegue
 
-Es un sitio estático, así que no necesita servidor ni adapter:
+El sitio se publica en **Cloudflare Workers** como archivos estáticos (plan gratuito), con la configuración en `wrangler.jsonc`:
 
 - **Comando de build:** `npm run build`
-- **Carpeta de salida:** `dist`
+- **Carpeta de salida:** `dist` (Cloudflare la sirve tal cual, sin código de servidor)
 - **Variables de entorno:** ninguna obligatoria
+- **Dominio:** `piura-ai.org`. `www.piura-ai.org` redirige al dominio principal.
 
-En Vercel o Netlify basta con importar el repositorio: detectan Astro automáticamente. Luego se apunta el dominio `piura-ai.org` al proyecto.
+Para desplegar a mano (requiere `npx wrangler login` con acceso a la cuenta):
+
+```bash
+npm run deploy
+```
+
+El dominio está registrado en GoDaddy y su DNS está delegado a Cloudflare. El correo del dominio se maneja con Zoho Mail; sus registros MX, SPF y DKIM viven en el DNS de Cloudflare.
 
 ## Contribuir
 

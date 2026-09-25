@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "piura-ai-landing",
+  "compatibility_date": "2026-09-25",
+  // Sitio 100 % estático: Cloudflare sirve dist/ sin código de Worker.
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "workers_dev": true,
+  "preview_urls": true
+}
