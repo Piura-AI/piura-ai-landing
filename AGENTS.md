@@ -27,6 +27,7 @@ Después de agregar o cambiar integraciones, correr `npx astro sync`.
 ## Estructura
 
 ```
+brand/social/            Avatar y logos para GitHub/redes (generados)
 brand/source/            Fuentes de marca: zorro vectorizado (potrace), logo original, Space Grotesk 700
 scripts/build-brand.mjs  Genera todos los assets de marca (ver "Marca")
 public/brand/            Logos SVG/PNG generados (horizontal, versión sobre oscuro, isotipo)
@@ -66,6 +67,7 @@ CLAUDE.md                Solo importa este archivo (@AGENTS.md). Es un archivo r
 - El logo horizontal compone el zorro + "Piura AI" en una sola línea con Space Grotesk Bold convertida a trazos (opentype.js), así el SVG no depende de fuentes.
 - Variantes: `piura-ai-logo.svg` (fondo claro), `piura-ai-logo-on-dark.svg` (footer navy), `piura-ai-mark.svg` (solo zorro). El favicon y los íconos de app usan solo el zorro.
 - `og-image.png` (1200×630) es crema con el logo, la tagline y las ondas del hero.
+- `brand/social/`: `piura-ai-avatar.png` (1000×1000, zorro sobre crema a sangre, apto para recorte circular) para la org de GitHub y redes, más el logo horizontal en PNG (2000px) y SVG.
 - Si cambia el logo oficial, reemplazar `brand/source/fox-traced.svg` (o volver a trazarlo) y ajustar `FOX` (bounding box) en el script.
 
 ## Skills del proyecto

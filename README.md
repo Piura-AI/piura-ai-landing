@@ -24,7 +24,7 @@ Está hecha con [Astro](https://astro.build) y no usa frameworks de UI ni backen
 ## Primeros pasos
 
 ```bash
-git clone https://github.com/willywg/piura-ai-landing.git
+git clone https://github.com/Piura-AI/piura-ai-landing.git
 cd piura-ai-landing
 npm install
 npm run dev
@@ -80,6 +80,7 @@ En `site.socials`, reemplaza `href: null` por la URL. Las redes sin enlace no se
 
 ```
 ├── brand/source/          Fuentes de la marca (zorro vectorizado, logo original, tipografía)
+├── brand/social/          Avatar y logos para GitHub y redes sociales
 ├── public/                Archivos servidos tal cual: favicons, logos, imagen Open Graph
 ├── scripts/
 │   └── build-brand.mjs    Genera todos los assets de marca
@@ -98,7 +99,7 @@ En `site.socials`, reemplaza `href: null` por la URL. Las redes sin enlace no se
 
 - **Colores:** crema arena `#F6F3EC` de fondo, azul marino `#22384A` para titulares y terracota `#A8502A` como único color de acción. El detalle está en [DESIGN.md](DESIGN.md).
 - **Tipografías:** Space Grotesk para titulares e IBM Plex Sans para el cuerpo, servidas desde el propio sitio.
-- **Logo:** el zorro andino se vectorizó a partir del logo original. `npm run brand` genera el logo horizontal, la versión para fondo oscuro, el isotipo, los favicons y `og-image.png` (1200×630).
+- **Logo:** el zorro andino se vectorizó a partir del logo original. `npm run brand` genera el logo horizontal, la versión para fondo oscuro, el isotipo, los favicons, `og-image.png` (1200×630) y, en `brand/social/`, el avatar cuadrado para la organización de GitHub y redes sociales.
 
 ## SEO
 

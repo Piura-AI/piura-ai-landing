@@ -65,11 +65,11 @@ function horizontalLogo({ orange = ORANGE, blue = BLUE, word2 = BLUE } = {}) {
 }
 
 // Isotipo: solo el zorro, cuadrado y centrado.
-function mark({ orange = ORANGE, blue = BLUE, bg = null, padRatio = 0.06 } = {}) {
+function mark({ orange = ORANGE, blue = BLUE, bg = null, padRatio = 0.06, radius = 0.22 } = {}) {
   const side = FOX.h * (1 + padRatio * 2);
   const x = FOX.x + FOX.w / 2 - side / 2;
   const y = FOX.y - FOX.h * padRatio;
-  const rect = bg ? `<rect x="${x}" y="${y}" width="${side}" height="${side}" rx="${side * 0.22}" fill="${bg}"/>` : '';
+  const rect = bg ? `<rect x="${x}" y="${y}" width="${side}" height="${side}" rx="${side * radius}" fill="${bg}"/>` : '';
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${[x, y, side, side].map(Math.round).join(' ')}" role="img" aria-label="Piura AI">${rect}${foxGroup({ orange, blue })}</svg>`;
 }
 
@@ -80,6 +80,8 @@ const logoOnDark = horizontalLogo({ orange: '#E07A4B', blue: ON_DARK_BLUE, word2
 const logoMark = mark();
 const favicon = mark({ padRatio: 0.02 });
 const appIcon = mark({ bg: CREAM, padRatio: 0.16 });
+// Avatar para GitHub/redes: cuadrado a sangre; el margen amplio sobrevive al recorte circular.
+const avatar = mark({ bg: CREAM, padRatio: 0.2, radius: 0 });
 
 await writeFile(path('public/brand/piura-ai-logo-on-dark.svg'), logoOnDark);
 await writeFile(path('public/brand/piura-ai-mark.svg'), logoMark);
@@ -94,6 +96,12 @@ await png(logoMark, 1024, 'public/brand/piura-ai-mark.png');
 await png(appIcon, 180, 'public/apple-touch-icon.png');
 await png(appIcon, 192, 'public/icon-192.png');
 await png(appIcon, 512, 'public/icon-512.png');
+
+await mkdir(path('brand/social'), { recursive: true });
+await png(avatar, 1000, 'brand/social/piura-ai-avatar.png');
+await png(logo, 2000, 'brand/social/piura-ai-logo.png');
+await writeFile(path('brand/social/piura-ai-logo.svg'), logo);
+await writeFile(path('brand/social/piura-ai-mark.svg'), logoMark);
 
 // favicon.ico (16/32/48) con PNGs embebidos.
 const sizes = [16, 32, 48];
