@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { allies } from '../data/site';
 ---
 
@@ -6,7 +7,15 @@ import { allies } from '../data/site';
   <div class="wrap">
     <h2 class="section-title">Aliados y ecosistema</h2>
     <ul>
-      {allies.map((a) => <li>{a}</li>)}
+      {
+        allies.map((a) => (
+          <li>
+            <a href={a.href} target="_blank" rel="noopener" title={a.name}>
+              <Image src={a.logo} alt={a.name} height={56} densities={[1, 2]} loading="lazy" />
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </section>
@@ -17,32 +26,54 @@ import { allies } from '../data/site';
   }
 
   ul {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     list-style: none;
     margin: 32px 0 0;
     padding: 0;
   }
 
-  li {
-    padding: 14px 26px;
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 112px;
+    padding: 20px 28px;
     border: 1px solid var(--color-line);
     border-radius: var(--radius-md);
     background: var(--color-surface);
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--color-muted);
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
   }
 
-  @media (max-width: 520px) {
+  a:hover {
+    border-color: var(--color-accent-soft);
+    box-shadow: 0 10px 24px -18px rgb(31 46 56 / 0.4);
+  }
+
+  img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 56px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 760px) {
     ul {
+      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
     }
 
-    li {
-      padding: 10px 16px;
-      font-size: 14px;
+    a {
+      height: 88px;
+      padding: 14px 16px;
+    }
+
+    img {
+      max-height: 44px;
     }
   }
 </style>
