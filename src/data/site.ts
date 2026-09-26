@@ -16,7 +16,7 @@ import camco from '../assets/allies/camara-comercio-piura.png';
 import gdg from '../assets/allies/gdg-piura.png';
 import hubUdep from '../assets/allies/hub-udep.png';
 import innospace from '../assets/allies/innospace-camco.png';
-import piuraInnova from '../assets/allies/piura-innova.png';
+import piuraConecta from '../assets/allies/piura-conecta.png';
 import udep from '../assets/allies/universidad-de-piura.png';
 
 export const site = {
@@ -204,7 +204,7 @@ export type Ally = { name: string; logo: ImageMetadata; href: string };
 // Logos recortados en src/assets/allies/ (altura máx. 160px; Astro los convierte a WebP).
 export const allies: Ally[] = [
   { name: 'GDG Piura', logo: gdg, href: 'https://gdgpiura.dev/' },
-  { name: 'Piura Innova', logo: piuraInnova, href: 'https://piurainnova.com/' },
+  { name: 'Piura Conecta', logo: piuraConecta, href: 'https://piuraconecta.com/' },
   { name: 'Cámara de Comercio de Piura', logo: camco, href: 'https://camcopiura.org.pe/' },
   { name: 'INNOSPACE CAMCO', logo: innospace, href: 'https://innospace.camcopiura.org.pe/' },
   { name: 'Universidad de Piura', logo: udep, href: 'https://www.udep.edu.pe/' },
