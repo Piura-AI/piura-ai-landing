@@ -12,10 +12,13 @@ import oliver from '../assets/team/oliver-sandoval.jpg';
 import william from '../assets/team/william-wong.jpg';
 import yosbi from '../assets/team/yosbi-golles.jpg';
 
+import agiliza from '../assets/allies/agiliza360.png';
+import developerPe from '../assets/allies/developer-pe.png';
 import gdg from '../assets/allies/gdg-piura.png';
 import hubUdep from '../assets/allies/hub-udep.png';
 import innospace from '../assets/allies/innospace-camco.png';
 import piuraConecta from '../assets/allies/piura-conecta.png';
+import shoppy from '../assets/allies/shoppy.png';
 
 export const site = {
   name: 'Piura AI',
@@ -205,4 +208,10 @@ export const allies: Ally[] = [
   { name: 'Piura Conecta', logo: piuraConecta, href: 'https://piuraconecta.com/' },
   { name: 'INNOSPACE CAMCO', logo: innospace, href: 'https://innospace.camcopiura.org.pe/' },
   { name: 'Hub UDEP', logo: hubUdep, href: 'https://www.hub.udep.pe/' },
+];
+
+export const companies: Ally[] = [
+  { name: 'Shoppy.chat', logo: shoppy, href: 'https://shoppy.chat/' },
+  { name: 'Agiliza360.ai', logo: agiliza, href: 'https://www.agiliza360.ai/' },
+  { name: 'Developer.pe', logo: developerPe, href: 'https://www.youtube.com/@Developerpe' },
 ];
