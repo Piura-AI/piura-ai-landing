@@ -19,6 +19,7 @@ import hubUdep from '../assets/allies/hub-udep.png';
 import innospace from '../assets/allies/innospace-camco.png';
 import piuraConecta from '../assets/allies/piura-conecta.png';
 import shoppy from '../assets/allies/shoppy.png';
+import tallanix from '../assets/allies/tallanix.png';
 
 export const site = {
   name: 'Piura AI',
@@ -214,4 +215,5 @@ export const companies: Ally[] = [
   { name: 'Shoppy.chat', logo: shoppy, href: 'https://shoppy.chat/' },
   { name: 'Agiliza360.ai', logo: agiliza, href: 'https://www.agiliza360.ai/' },
   { name: 'Developer.pe', logo: developerPe, href: 'https://www.youtube.com/@Developerpe' },
+  { name: 'Tallanix', logo: tallanix, href: 'https://tallanix.com/' },
 ];
