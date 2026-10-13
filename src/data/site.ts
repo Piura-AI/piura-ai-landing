@@ -42,11 +42,11 @@ export const site = {
 };
 
 export const nav = [
-  { label: 'Manifiesto', href: '#manifiesto' },
-  { label: 'Eventos', href: '#eventos' },
-  { label: 'Trayectoria', href: '#trayectoria' },
-  { label: 'Comunidad', href: '#comunidad' },
-  { label: 'Aliados', href: '#aliados' },
+  { label: 'Manifiesto', href: '/#manifiesto' },
+  { label: 'Eventos', href: '/#eventos' },
+  { label: 'Trayectoria', href: '/#trayectoria' },
+  { label: 'Comunidad', href: '/#comunidad' },
+  { label: 'Aliados', href: '/#aliados' },
 ];
 
 export const stats = [

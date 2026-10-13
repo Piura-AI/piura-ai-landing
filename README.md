@@ -102,7 +102,7 @@ En `site.socials`, reemplaza `href: null` por la URL. Las redes sin enlace no se
 
 - **Colores:** crema arena `#F6F3EC` de fondo, azul marino `#22384A` para titulares y terracota `#A8502A` como único color de acción. El detalle está en [DESIGN.md](DESIGN.md).
 - **Tipografías:** Space Grotesk para titulares e IBM Plex Sans para el cuerpo, servidas desde el propio sitio.
-- **Kit de marca:** la carpeta [`branding/`](branding/) tiene los logos (horizontal, cuadrado e ícono) en SVG y PNG, para fondo claro y oscuro, a una tinta y con o sin fondo, además de la paleta y la [guía de marca en PDF](branding/Guia-de-marca-Piura-AI.pdf).
+- **Kit de marca:** la carpeta [`branding/`](branding/) tiene los logos (horizontal, cuadrado e ícono) en SVG y PNG, para fondo claro y oscuro, a una tinta y con o sin fondo, además de la paleta y la [guía de marca en PDF](branding/Guia-de-marca-Piura-AI.pdf). Todo se puede ver y descargar en [piura-ai.org/marca](https://piura-ai.org/marca), que se genera desde esa misma carpeta.
 - **Logo:** el zorro costeño se vectorizó a partir del logo original. `npm run brand` genera el logo horizontal, la versión para fondo oscuro, el isotipo, los favicons, `og-image.png` (1200×630) y, en `brand/social/`, el avatar cuadrado para la organización de GitHub y redes sociales.
 
 ## SEO

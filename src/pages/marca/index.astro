@@ -1,0 +1,446 @@
+---
+import { ArrowUpRight, Download, FileText } from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { avatars, colors, families, fonts, guidePdfUrl, kitZipUrl, logoColors, logoFiles, rules, versions } from '../../data/brand';
+import { site } from '../../data/site';
+
+const title = 'Marca y logos | Piura AI';
+const description =
+  'Descarga el logo de Piura AI en SVG y PNG, en versiones para fondo claro, oscuro y a una tinta, junto con los colores, las tipografías y la guía de marca.';
+const palettes = [
+  { title: 'Colores de la marca', text: 'La terracota es el único color de acción: úsala en botones, enlaces y acentos.', items: colors },
+  { title: 'Colores del logo', text: 'Tonos propios del zorro, un poco más vivos. Son solo para el logo.', items: logoColors },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <main id="contenido">
+    <section class="section intro">
+      <div class="wrap">
+        <h1>Marca y logos</h1>
+        <p class="lead">
+          Aquí están el logo de Piura AI, sus colores y sus tipografías. Si vas a mencionarnos en un afiche, una presentación o una nota,
+          descarga lo que necesites desde esta página.
+        </p>
+        <div class="actions">
+          <a href={kitZipUrl} class="btn btn--primary" download>
+            <Download size={18} aria-hidden="true" /> Descargar kit completo (ZIP)
+          </a>
+          <a href={guidePdfUrl} class="btn btn--outline" target="_blank" rel="noopener">
+            <FileText size={18} aria-hidden="true" /> Ver guía de marca (PDF)
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {
+      families.map((family, i) => (
+        <section class:list={['section', { 'section--surface': i % 2 === 0 }]} id={family.dir}>
+          <div class="wrap">
+            <h2 class="section-title">{family.title}</h2>
+            <p class="section-lead">{family.text}</p>
+            <ul class="cards">
+              {versions.map((version) => {
+                const files = logoFiles(family, version);
+                const label = `${family.title}, ${version.name.toLowerCase()}`;
+                return (
+                  <li class="card">
+                    <div class:list={['stage', `stage--${version.stage}`, `stage--${family.dir}`]}>
+                      <img src={files.svg} alt={label} width={family.width} height={family.height} loading="lazy" />
+                    </div>
+                    <div class="card__body">
+                      <h3>{version.name}</h3>
+                      <p>{version.use}</p>
+                      <ul class="downloads">
+                        <li>
+                          <a href={files.svg} download>
+                            <Download size={14} aria-hidden="true" /> SVG<span class="sr-only">: {label}</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href={files.png} download>
+                            <Download size={14} aria-hidden="true" /> PNG<span class="sr-only"> transparente: {label}</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href={files.pngBg} download>
+                            <Download size={14} aria-hidden="true" /> PNG con fondo<span class="sr-only">: {label}</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </section>
+      ))
+    }
+
+    <section class="section" id="avatares">
+      <div class="wrap">
+        <h2 class="section-title">Avatares para redes</h2>
+        <p class="section-lead">Cuadrados de 1000 × 1000 px, con margen suficiente para el recorte circular de los perfiles.</p>
+        <ul class="cards cards--avatars">
+          {
+            avatars.map((avatar) => (
+              <li class="card">
+                <img class="avatar" src={avatar.file} alt={avatar.name} width="1000" height="1000" loading="lazy" />
+                <div class="card__body">
+                  <h3>{avatar.name}</h3>
+                  <ul class="downloads">
+                    <li>
+                      <a href={avatar.file} download>
+                        <Download size={14} aria-hidden="true" /> PNG<span class="sr-only">: {avatar.name}</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--surface" id="colores">
+      <div class="wrap">
+        <h2 class="section-title">Colores</h2>
+        {
+          palettes.map((palette) => (
+            <>
+              <h3 class="group">{palette.title}</h3>
+              <p class="group-text">{palette.text}</p>
+              <ul class="swatches">
+                {palette.items.map((color) => (
+                  <li>
+                    <span class="chip" style={`background:${color.hex}`} aria-hidden="true" />
+                    <strong>{color.name}</strong>
+                    <code>{color.hex}</code>
+                    <span>{color.use}</span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ))
+        }
+        <p class="note">
+          La paleta también está lista para copiar en{' '}
+          <a href="/marca/descargas/colores/colores.css" download>CSS</a> y{' '}
+          <a href="/marca/descargas/colores/colores.json" download>JSON</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="tipografia">
+      <div class="wrap">
+        <h2 class="section-title">Tipografía</h2>
+        <p class="section-lead">Dos familias gratuitas, disponibles en Google Fonts, Canva y Google Slides.</p>
+        <ul class="fonts">
+          {
+            fonts.map((font) => (
+              <li class:list={['font', `font--${font.family}`]}>
+                <span class="font__role">{font.role}</span>
+                <p class="font__sample" aria-hidden="true">
+                  Aa Bb Cc 123
+                </p>
+                <h3>{font.name}</h3>
+                <a href={font.href} target="_blank" rel="noopener">
+                  Ver en Google Fonts <ArrowUpRight size={14} aria-hidden="true" />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--surface" id="uso">
+      <div class="wrap">
+        <h2 class="section-title">Reglas rápidas</h2>
+        <ul class="rules">
+          {rules.map((rule) => <li>{rule}</li>)}
+        </ul>
+        <p class="note">
+          El detalle está en la <a href={guidePdfUrl} target="_blank" rel="noopener">guía de marca</a>. Si necesitas una pieza que no
+          encuentras aquí, escríbenos a{' '}<a href={`mailto:${site.email}`}>{site.email}</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .intro {
+    padding-bottom: clamp(48px, 7vw, 72px);
+  }
+
+  h1 {
+    font-size: clamp(36px, 5vw, 52px);
+    font-weight: 700;
+    color: var(--color-navy);
+  }
+
+  .lead {
+    margin-top: 18px;
+    max-width: 640px;
+    font-size: 18px;
+    color: var(--color-muted);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    list-style: none;
+    margin: 32px 0 0;
+    padding: 0;
+  }
+
+  .cards--avatars {
+    grid-template-columns: repeat(2, minmax(0, 280px));
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    overflow: hidden;
+  }
+
+  .stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 168px;
+    padding: 24px;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .stage img {
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .stage--logo-horizontal img {
+    max-height: 72px;
+  }
+
+  .stage--icono img {
+    max-height: 96px;
+  }
+
+  .stage--cream {
+    background: var(--color-cream);
+  }
+
+  .stage--navy {
+    background: var(--color-navy);
+  }
+
+  .stage--white {
+    background: var(--color-surface);
+  }
+
+  .stage--accent {
+    background: var(--color-accent);
+  }
+
+  .avatar {
+    width: 100%;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 18px 20px 20px;
+  }
+
+  .card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-navy);
+  }
+
+  .card p {
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--color-muted);
+  }
+
+  .downloads {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    margin: auto 0 0;
+    padding: 16px 0 0;
+  }
+
+  .downloads a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 11px;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-sm);
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .downloads a:hover {
+    border-color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .group {
+    margin-top: 36px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-navy);
+  }
+
+  .group-text {
+    margin-top: 6px;
+    font-size: 15px;
+    color: var(--color-muted);
+  }
+
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    list-style: none;
+    margin: 18px 0 0;
+    padding: 0;
+  }
+
+  .swatches li {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    color: var(--color-muted);
+  }
+
+  .chip {
+    height: 88px;
+    margin-bottom: 12px;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+  }
+
+  .swatches strong {
+    font-family: var(--font-display);
+    font-size: 16px;
+    color: var(--color-navy);
+  }
+
+  code {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 13.5px;
+    color: var(--color-ink);
+  }
+
+  .note {
+    margin-top: 32px;
+    max-width: 640px;
+    color: var(--color-muted);
+  }
+
+  .fonts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    list-style: none;
+    margin: 32px 0 0;
+    padding: 0;
+  }
+
+  .font {
+    padding: 28px;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+  }
+
+  .font__role {
+    font-size: 14px;
+    color: var(--color-muted);
+  }
+
+  .font__sample {
+    margin: 10px 0 14px;
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.1;
+    color: var(--color-navy);
+  }
+
+  .font--display .font__sample {
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+
+  .font h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-navy);
+  }
+
+  .font a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 6px;
+    font-size: 14.5px;
+    font-weight: 600;
+  }
+
+  .rules {
+    display: grid;
+    gap: 10px;
+    max-width: 720px;
+    margin: 24px 0 0;
+    padding-left: 20px;
+    color: var(--color-ink);
+  }
+
+  @media (max-width: 1000px) {
+    .cards,
+    .swatches {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cards--avatars {
+      grid-template-columns: repeat(2, minmax(0, 280px));
+    }
+  }
+
+  @media (max-width: 520px) {
+    .cards:not(.cards--avatars),
+    .fonts {
+      grid-template-columns: 1fr;
+    }
+
+    .actions .btn {
+      width: 100%;
+    }
+  }
+</style>

@@ -42,7 +42,10 @@ const year = new Date().getFullYear();
 
     <div class="bottom">
       <span>© {year} Piura AI. Piura, Perú.</span>
-      {site.codeOfConductUrl && <a href={site.codeOfConductUrl}>Código de conducta</a>}
+      <span class="links">
+        <a href="/marca">Marca y logos</a>
+        {site.codeOfConductUrl && <a href={site.codeOfConductUrl}>Código de conducta</a>}
+      </span>
     </div>
   </div>
 </footer>
@@ -138,6 +141,12 @@ const year = new Date().getFullYear();
 
   .bottom a {
     color: #9fb0ba;
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
   }
 
   @media (max-width: 760px) {

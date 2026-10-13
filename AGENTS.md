@@ -38,6 +38,9 @@ scripts/build-branding-kit.mjs  Genera el kit de branding/ y la guía en PDF
 public/brand/            Logos SVG/PNG generados (horizontal, versión sobre oscuro, isotipo)
 public/                  favicon.ico/.svg, apple-touch-icon, icon-192/512, og-image.png, site.webmanifest
 src/data/site.ts         TODO el contenido editable: textos, eventos, trayectoria, fundadores, aliados, enlaces
+src/data/brand.ts        Contenido de la página /marca (formatos, versiones, tipografías, reglas)
+src/pages/marca/         Página de marca y endpoints que publican branding/ (descargas y ZIP)
+src/lib/branding-files.ts  Lee branding/ al compilar
 src/assets/images/       Foto del primer evento (hero)
 src/assets/team/         Fotos de fundadores (tomadas de sus perfiles de LinkedIn, ~400×400)
 src/components/          Una sección por componente: Header, Hero, Stats, Manifesto, Events, Timeline, Founders, Allies, Footer
@@ -74,6 +77,7 @@ CLAUDE.md                Solo importa este archivo (@AGENTS.md). Es un archivo r
 - `og-image.png` (1200×630) es crema con el logo, la tagline y las ondas del hero.
 - `brand/social/`: `piura-ai-avatar.png` (1000×1000, zorro sobre crema a sangre, apto para recorte circular) para la org de GitHub y redes, más el logo horizontal en PNG (2000px) y SVG.
 - **Kit para compartir (`branding/`):** `npm run branding` genera el logo horizontal, el cuadrado (zorro arriba, texto abajo) y el ícono, cada uno en cuatro versiones (`color-fondo-claro`, `color-fondo-oscuro`, `una-tinta-azul`, `una-tinta-blanco`) y tres formatos (`svg/`, `png-transparente/`, `png-con-fondo/`), más avatares en `redes/` y la paleta en `colores/`. La guía `Guia-de-marca-Piura-AI.pdf` se imprime con Chrome headless desde `brand/source/guia-de-marca.html`; si cambian colores, tipografías o reglas, editar ese HTML y `branding/LEEME.md` (este último se mantiene a mano).
+- **Página `/marca`:** muestra el kit con descargas. No hay copia en `public/`: al compilar, `src/pages/marca/descargas/[...file].ts` publica cada archivo de `branding/` en `/marca/descargas/<misma ruta>` y `src/pages/marca/piura-ai-branding.zip.ts` arma el ZIP completo (fflate). Basta con correr `npm run branding` y hacer push para que la web se actualice. Los textos de la página están en `src/data/brand.ts`; la paleta se lee de `branding/colores/colores.json`.
 - Si cambia el logo oficial, reemplazar `brand/source/fox-traced.svg` (o volver a trazarlo), ajustar `FOX` (bounding box) en `scripts/brand-lib.mjs` y correr `npm run brand` y `npm run branding`.
 
 ## Skills del proyecto
