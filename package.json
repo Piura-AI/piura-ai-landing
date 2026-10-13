@@ -12,7 +12,8 @@
     "astro": "astro",
     "brand": "node scripts/build-brand.mjs",
     "check": "astro check",
-    "deploy": "astro build && wrangler deploy"
+    "deploy": "astro build && wrangler deploy",
+    "branding": "node scripts/build-branding-kit.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",

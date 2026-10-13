@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Guía de marca · Piura AI</title>
+<!-- Fuente de la guía en PDF. Se imprime con `npm run branding` (Chrome headless) a branding/Guia-de-marca-Piura-AI.pdf -->
+<style>
+  @font-face { font-family: 'Space Grotesk'; src: url('../../node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2') format('woff2'); font-weight: 300 700; }
+  @font-face { font-family: 'IBM Plex Sans'; src: url('../../node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff2') format('woff2'); font-weight: 400; }
+  @font-face { font-family: 'IBM Plex Sans'; src: url('../../node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-500-normal.woff2') format('woff2'); font-weight: 500; }
+  @font-face { font-family: 'IBM Plex Sans'; src: url('../../node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff2') format('woff2'); font-weight: 600; }
+
+  @page { size: 1280px 720px; margin: 0; }
+  :root {
+    --accent: #a8502a; --navy: #22384a; --ink: #1f2e38; --muted: #4a5a63;
+    --cream: #f6f3ec; --line: #e7e2d5; --soft: #f0b79b; --fox-orange: #cb5f31; --fox-blue: #3b5973;
+  }
+  * { box-sizing: border-box; margin: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: 'IBM Plex Sans', sans-serif; color: var(--ink); font-size: 17px; line-height: 1.5; }
+  .page {
+    position: relative;
+    width: 1280px; height: 720px;
+    padding: 64px 72px 56px;
+    background: var(--cream);
+    overflow: hidden;
+    break-after: page;
+  }
+  .page:last-child { break-after: auto; }
+  h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: var(--navy); letter-spacing: -0.02em; line-height: 1.1; }
+  h2 { font-size: 40px; }
+  h3 { font-size: 19px; letter-spacing: -0.01em; }
+  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .intro { margin-top: 12px; max-width: 760px; color: var(--muted); }
+  .foot { position: absolute; left: 72px; right: 72px; bottom: 26px; display: flex; justify-content: space-between; font-size: 12px; color: #8a959b; }
+  code { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.86em; }
+  .waves { position: absolute; left: 0; right: 0; bottom: 60px; width: 100%; height: 120px; fill: none; stroke-width: 2.5; }
+
+  /* Portada */
+  .cover { background: var(--navy); color: #dce4e8; padding: 88px 88px; }
+  .cover img { height: 132px; }
+  .cover h1 { margin-top: 150px; font-size: 76px; color: #fff; }
+  .cover p { margin-top: 16px; font-size: 22px; color: #b7c3cc; }
+  .cover .foot { left: 88px; right: 88px; color: #8fa2ae; }
+
+  /* Grillas */
+  .grid { display: grid; gap: 20px; margin-top: 30px; }
+  .cols-2 { grid-template-columns: 1fr 1fr; }
+  .cols-3 { grid-template-columns: 1.5fr 1fr 1fr; }
+  .cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .tile { border-radius: 16px; background: #fff; border: 1px solid var(--line); padding: 22px; }
+  .tile small { display: block; margin-top: 14px; font-size: 13px; color: var(--muted); }
+  .tile small b { display: block; color: var(--navy); font-size: 14.5px; }
+  .stage { display: flex; align-items: center; justify-content: center; height: 250px; border-radius: 12px; background: var(--cream); }
+  .stage img { max-width: 78%; max-height: 62%; }
+  .stage.short { height: 130px; }
+  .on-navy { background: var(--navy); } .on-white { background: #fff; border: 1px solid var(--line); } .on-accent { background: var(--accent); }
+
+  /* Colores */
+  .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; }
+  .sw { border-radius: 14px; overflow: hidden; background: #fff; border: 1px solid var(--line); }
+  .sw i { display: block; height: 92px; }
+  .sw div { padding: 12px 14px 14px; font-size: 13px; color: var(--muted); line-height: 1.45; }
+  .sw b { display: block; font-size: 15px; color: var(--navy); }
+  .sw.big i { height: 150px; }
+
+  /* Tipografía */
+  .type { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px; }
+  .type .tile { padding: 28px 30px; }
+  .glyphs { font-size: 62px; line-height: 1; color: var(--navy); margin: 14px 0 12px; }
+  .sg { font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.02em; }
+  .plex { font-family: 'IBM Plex Sans', sans-serif; }
+  .meta { font-size: 14px; color: var(--muted); }
+  .scale { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); display: grid; gap: 6px; }
+
+  /* Usos */
+  .rules { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 22px; }
+  .rule .stage { height: 120px; position: relative; }
+  .rule .stage img { max-width: 70%; max-height: 50%; }
+  .rule p { margin-top: 10px; font-size: 13.5px; color: var(--muted); }
+  .rule p b { color: #a3312a; }
+  .clear { position: relative; display: inline-block; padding: 44px; border: 1.5px dashed var(--accent); border-radius: 6px; }
+  .clear img { display: block; height: 96px; }
+  .clear span { position: absolute; font-size: 12px; font-weight: 600; color: var(--accent); }
+  .clear .t { top: 14px; left: 50%; transform: translateX(-50%); } .clear .l { left: 16px; top: 50%; transform: translateY(-50%); }
+
+  ul.list { margin-top: 14px; padding-left: 20px; display: grid; gap: 7px; color: var(--muted); font-size: 16px; }
+  ul.list b { color: var(--navy); }
+  pre.tree { margin-top: 24px; padding: 24px 28px; border-radius: 16px; background: var(--navy); color: #dce4e8; font: 13.5px/1.62 ui-monospace, 'SF Mono', Menlo, monospace; }
+  pre.tree span { color: #8fa2ae; }
+</style>
+</head>
+<body>
+
+<!-- 1. Portada -->
+<section class="page cover">
+  <img src="../../branding/logo-horizontal/svg/piura-ai-logo-horizontal-color-fondo-oscuro.svg" alt="Piura AI">
+  <h1>Guía de marca</h1>
+  <p>Logo, colores, tipografía y reglas de uso de la comunidad Piura AI.</p>
+  <div class="foot"><span>piura-ai.org</span><span>Versión 1.0 · Octubre de 2026</span></div>
+</section>
+
+<!-- 2. Logo -->
+<section class="page">
+  <p class="eyebrow">01 · Logo</p>
+  <h2>Tres formatos, un mismo zorro</h2>
+  <p class="intro">El zorro andino es el símbolo de Piura AI: un animal de nuestra región, curioso y adaptable. Usa el formato que mejor encaje en el espacio disponible.</p>
+  <div class="grid cols-3">
+    <div class="tile"><div class="stage"><img src="../../branding/logo-horizontal/svg/piura-ai-logo-horizontal-color-fondo-claro.svg" alt=""></div><small><b>Horizontal</b>Versión principal. Web, documentos, firmas y banners.</small></div>
+    <div class="tile"><div class="stage"><img src="../../branding/logo-cuadrado/svg/piura-ai-logo-cuadrado-color-fondo-claro.svg" alt="" style="max-height:82%"></div><small><b>Cuadrado</b>Espacios cuadrados o verticales: afiches, polos, sellos.</small></div>
+    <div class="tile"><div class="stage"><img src="../../branding/icono/svg/piura-ai-icono-color-fondo-claro.svg" alt="" style="max-height:74%"></div><small><b>Ícono</b>Avatares, favicon y tamaños muy pequeños.</small></div>
+  </div>
+  <div class="foot"><span>Piura AI · Guía de marca</span><span>2</span></div>
+</section>
+
+<!-- 3. Versiones de color -->
+<section class="page">
+  <p class="eyebrow">02 · Versiones</p>
+  <h2>Para fondo claro, oscuro y a una tinta</h2>
+  <p class="intro">Cada formato viene en cuatro versiones. Todas están en SVG y en PNG con fondo transparente; el PNG “con fondo” ya trae el color recomendado.</p>
+  <div class="grid cols-4">
+    <div class="tile"><div class="stage short"><img src="../../branding/logo-horizontal/svg/piura-ai-logo-horizontal-color-fondo-claro.svg" alt=""></div><small><b>Color · fondo claro</b>La versión por defecto. Sobre crema o blanco.</small></div>
+    <div class="tile"><div class="stage short on-navy"><img src="../../branding/logo-horizontal/svg/piura-ai-logo-horizontal-color-fondo-oscuro.svg" alt=""></div><small><b>Color · fondo oscuro</b>Tonos aclarados para azul marino o negro.</small></div>
+    <div class="tile"><div class="stage short on-white"><img src="../../branding/logo-horizontal/svg/piura-ai-logo-horizontal-una-tinta-azul.svg" alt=""></div><small><b>Una tinta · azul</b>Impresión a un color, sellos y grabados.</small></div>
+    <div class="tile"><div class="stage short on-accent"><img src="../../branding/logo-horizontal/svg/piura-ai-logo-horizontal-una-tinta-blanco.svg" alt=""></div><small><b>Una tinta · blanco</b>Sobre fotos oscuras o colores intensos.</small></div>
+  </div>
+  <div class="grid cols-4" style="margin-top:16px">
+    <div class="tile"><div class="stage short"><img src="../../branding/logo-cuadrado/svg/piura-ai-logo-cuadrado-color-fondo-claro.svg" alt="" style="max-height:84%"></div></div>
+    <div class="tile"><div class="stage short on-navy"><img src="../../branding/logo-cuadrado/svg/piura-ai-logo-cuadrado-color-fondo-oscuro.svg" alt="" style="max-height:84%"></div></div>
+    <div class="tile"><div class="stage short on-white"><img src="../../branding/icono/svg/piura-ai-icono-una-tinta-azul.svg" alt="" style="max-height:78%"></div></div>
+    <div class="tile"><div class="stage short on-accent"><img src="../../branding/icono/svg/piura-ai-icono-una-tinta-blanco.svg" alt="" style="max-height:78%"></div></div>
+  </div>
+  <div class="foot"><span>Piura AI · Guía de marca</span><span>3</span></div>
+</section>
+
+<!-- 4. Uso correcto -->
+<section class="page">
+  <p class="eyebrow">03 · Uso del logo</p>
+  <h2>Espacio, tamaño y lo que conviene evitar</h2>
+  <div class="grid cols-2" style="align-items:center; margin-top:22px">
+    <div style="text-align:center">
+      <div class="clear"><span class="t">x</span><span class="l">x</span><img src="../../branding/logo-horizontal/svg/piura-ai-logo-horizontal-color-fondo-claro.svg" alt=""></div>
+    </div>
+    <ul class="list">
+      <li><b>Área de respeto:</b> deja libre alrededor del logo un margen “x” igual al ancho de la cabeza del zorro. Nada de textos ni otros logos dentro.</li>
+      <li><b>Tamaño mínimo:</b> horizontal, 120 px o 30 mm de ancho; ícono, 24 px o 8 mm. Por debajo de eso, usa solo el ícono.</li>
+      <li><b>Contraste:</b> versión de fondo claro sobre crema o blanco; versión de fondo oscuro sobre azul marino. Sobre fotos, la de una tinta.</li>
+    </ul>
+  </div>
+  <div class="rules">
+    <div class="rule"><div class="stage on-white"><img src="../../branding/logo-horizontal/svg/piura-ai-logo-horizontal-color-fondo-claro.svg" alt="" style="transform:scaleX(1.5)"></div><p><b>No</b> lo estires ni lo deformes.</p></div>
+    <div class="rule"><div class="stage on-white"><img src="../../branding/logo-horizontal/svg/piura-ai-logo-horizontal-color-fondo-claro.svg" alt="" style="filter:hue-rotate(140deg) saturate(1.6)"></div><p><b>No</b> cambies sus colores.</p></div>
+    <div class="rule"><div class="stage on-navy"><img src="../../branding/logo-horizontal/svg/piura-ai-logo-horizontal-color-fondo-claro.svg" alt=""></div><p><b>No</b> uses la versión clara sobre fondos oscuros.</p></div>
+    <div class="rule"><div class="stage on-white"><img src="../../branding/logo-horizontal/svg/piura-ai-logo-horizontal-color-fondo-claro.svg" alt="" style="transform:rotate(-12deg); filter:drop-shadow(5px 6px 3px rgb(0 0 0 / .45))"></div><p><b>No</b> lo gires ni le pongas sombras o efectos.</p></div>
+  </div>
+  <div class="foot"><span>Piura AI · Guía de marca</span><span>4</span></div>
+</section>
+
+<!-- 5. Colores -->
+<section class="page">
+  <p class="eyebrow">04 · Colores</p>
+  <h2>Crema, azul marino y terracota</h2>
+  <p class="intro">La base es cálida y sobria. La terracota es el único color de acción: úsala para botones, enlaces y acentos, nunca para fondos grandes de texto.</p>
+  <div class="swatches">
+    <div class="sw"><i style="background:#a8502a"></i><div><b>Terracota</b>HEX #A8502A · RGB 168 80 42<br>Botones, enlaces, acentos</div></div>
+    <div class="sw"><i style="background:#22384a"></i><div><b>Azul marino</b>HEX #22384A · RGB 34 56 74<br>Titulares y fondos oscuros</div></div>
+    <div class="sw"><i style="background:#f6f3ec"></i><div><b>Crema</b>HEX #F6F3EC · RGB 246 243 236<br>Fondo base</div></div>
+    <div class="sw"><i style="background:#ffffff"></i><div><b>Blanco</b>HEX #FFFFFF · RGB 255 255 255<br>Tarjetas y secciones alternas</div></div>
+    <div class="sw"><i style="background:#1f2e38"></i><div><b>Tinta</b>HEX #1F2E38 · RGB 31 46 56<br>Texto principal</div></div>
+    <div class="sw"><i style="background:#4a5a63"></i><div><b>Gris azulado</b>HEX #4A5A63 · RGB 74 90 99<br>Texto secundario</div></div>
+    <div class="sw"><i style="background:#e7e2d5"></i><div><b>Línea</b>HEX #E7E2D5 · RGB 231 226 213<br>Bordes y divisores</div></div>
+    <div class="sw"><i style="background:#f0b79b"></i><div><b>Terracota suave</b>HEX #F0B79B · RGB 240 183 155<br>Acentos sobre azul marino</div></div>
+  </div>
+  <div class="foot"><span>Piura AI · Guía de marca</span><span>5</span></div>
+</section>
+
+<!-- 6. Colores del logo -->
+<section class="page">
+  <p class="eyebrow">04 · Colores</p>
+  <h2>Los colores del zorro</h2>
+  <p class="intro">El logo tiene sus propios tonos, un poco más vivos que los de la interfaz. Son solo para el logo: no los uses en textos ni botones.</p>
+  <div class="swatches">
+    <div class="sw big"><i style="background:#cb5f31"></i><div><b>Naranja zorro</b>HEX #CB5F31 · RGB 203 95 49<br>Logo sobre fondo claro</div></div>
+    <div class="sw big"><i style="background:#3b5973"></i><div><b>Azul zorro</b>HEX #3B5973 · RGB 59 89 115<br>Logo sobre fondo claro</div></div>
+    <div class="sw big"><i style="background:#e07a4b"></i><div><b>Naranja claro</b>HEX #E07A4B · RGB 224 122 75<br>Logo sobre fondo oscuro</div></div>
+    <div class="sw big"><i style="background:#9fb9cf"></i><div><b>Azul claro</b>HEX #9FB9CF · RGB 159 185 207<br>Logo sobre fondo oscuro</div></div>
+  </div>
+  <ul class="list" style="margin-top:26px; max-width:900px">
+    <li><b>Proporción recomendada:</b> alrededor de 70 % crema o blanco, 20 % azul marino y 10 % terracota.</li>
+    <li><b>Texto sobre color:</b> blanco sobre terracota y sobre azul marino; tinta sobre crema y blanco.</li>
+  </ul>
+  <div class="foot"><span>Piura AI · Guía de marca</span><span>6</span></div>
+</section>
+
+<!-- 7. Tipografía -->
+<section class="page">
+  <p class="eyebrow">05 · Tipografía</p>
+  <h2>Dos familias, ambas gratuitas</h2>
+  <div class="type">
+    <div class="tile">
+      <h3>Space Grotesk · titulares</h3>
+      <p class="glyphs sg">Aa Piura AI</p>
+      <p class="meta">Pesos 600 y 700. Titulares, cifras y el logotipo. Interletrado ligeramente cerrado (−2 %).</p>
+      <div class="scale">
+        <span class="sg" style="font-size:30px; color:var(--navy)">Comunidad de IA en Piura</span>
+        <span class="sg" style="font-size:20px; color:var(--navy)">Próximos eventos</span>
+      </div>
+      <p class="meta" style="margin-top:14px">fonts.google.com/specimen/Space+Grotesk</p>
+    </div>
+    <div class="tile">
+      <h3>IBM Plex Sans · cuerpo</h3>
+      <p class="glyphs plex" style="font-weight:500">Aa Bb Cc 123</p>
+      <p class="meta">Pesos 400, 500 y 600. Párrafos, botones, etiquetas y menús. Interlineado de 1,5 a 1,6.</p>
+      <div class="scale">
+        <span style="font-size:17px">Impulsamos el desarrollo responsable, la innovación práctica y la ética en inteligencia artificial.</span>
+        <span style="font-size:14px; font-weight:600; color:var(--accent)">Unirse a la comunidad</span>
+      </div>
+      <p class="meta" style="margin-top:14px">fonts.google.com/specimen/IBM+Plex+Sans</p>
+    </div>
+  </div>
+  <p class="intro" style="margin-top:20px; max-width:none">Si no puedes instalar fuentes (por ejemplo, en Canva o Google Slides), ambas están disponibles ahí con el mismo nombre. Como último recurso, usa Arial.</p>
+  <div class="foot"><span>Piura AI · Guía de marca</span><span>7</span></div>
+</section>
+
+<!-- 8. Estilo -->
+<section class="page">
+  <p class="eyebrow">06 · Estilo</p>
+  <h2>Cómo se ve y cómo suena Piura AI</h2>
+  <div class="grid cols-2" style="margin-top:24px">
+    <div class="tile">
+      <h3>Elementos gráficos</h3>
+      <ul class="list">
+        <li><b>Ondas:</b> tres líneas finas en azul marino y terracota con baja opacidad, como en la web. Decoran, no compiten con el texto.</li>
+        <li><b>Íconos:</b> de trazo, de la familia Lucide (lucide.dev). No usamos emojis en piezas oficiales ni en la web.</li>
+        <li><b>Fotos:</b> reales, de nuestros eventos y de la gente de la comunidad, antes que ilustraciones o imágenes generadas.</li>
+        <li><b>Formas:</b> esquinas redondeadas (12 a 24 px) y botones tipo píldora.</li>
+      </ul>
+    </div>
+    <div class="tile">
+      <h3>Voz y redacción</h3>
+      <ul class="list">
+        <li><b>Tono:</b> cercano pero profesional, en español neutro peruano.</li>
+        <li><b>Mayúsculas:</b> capitalización normal de oración. No escribimos todo en minúsculas ni todo en mayúsculas.</li>
+        <li><b>Nombre:</b> siempre “Piura AI”, con espacio y “AI” en mayúsculas. No “PiuraAI”, “Piura Ai” ni “Piura IA”.</li>
+        <li><b>Siglas y aliados:</b> IA, GDG Piura, INNOSPACE, Hub UDEP, tal como los escriben ellos.</li>
+      </ul>
+    </div>
+  </div>
+  <svg class="waves" viewBox="0 0 480 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 40 C 90 0, 150 80, 240 40 S 400 0, 480 50" stroke="#22384a" stroke-opacity="0.14"/>
+    <path d="M0 70 C 100 40, 160 100, 260 70 S 410 30, 480 90" stroke="#a8502a" stroke-opacity="0.22"/>
+    <path d="M0 100 C 110 80, 170 120, 270 95 S 420 70, 480 110" stroke="#22384a" stroke-opacity="0.1"/>
+  </svg>
+  <div class="foot"><span>Piura AI · Guía de marca</span><span>8</span></div>
+</section>
+
+<!-- 9. Archivos -->
+<section class="page">
+  <p class="eyebrow">07 · Archivos del kit</p>
+  <h2>Qué archivo usar</h2>
+  <div class="grid cols-2" style="margin-top:0; align-items:start">
+    <pre class="tree">branding/
+├─ logo-horizontal/   <span>principal</span>
+├─ logo-cuadrado/     <span>zorro arriba, texto abajo</span>
+├─ icono/             <span>solo el zorro</span>
+│   <span>cada una de las tres trae:</span>
+│   ├─ svg/               <span>vector, la mejor calidad</span>
+│   ├─ png-transparente/  <span>sin fondo</span>
+│   └─ png-con-fondo/     <span>con el color recomendado</span>
+├─ redes/             <span>avatares 1000×1000</span>
+├─ colores/           <span>paleta en CSS y JSON</span>
+├─ LEEME.md
+└─ Guia-de-marca-Piura-AI.pdf</pre>
+    <ul class="list" style="margin-top:24px">
+      <li><b>SVG:</b> para diseño, imprenta y web. Es la mejor calidad.</li>
+      <li><b>PNG transparente:</b> para presentaciones, documentos y redes, sobre tu propio fondo.</li>
+      <li><b>PNG con fondo:</b> cuando necesitas una imagen lista para pegar.</li>
+      <li><b>Nombres:</b> <code>color-fondo-claro</code> y <code>color-fondo-oscuro</code> indican sobre qué fondo va cada versión; <code>una-tinta-azul</code> y <code>una-tinta-blanco</code> son de un solo color.</li>
+      <li><b>Dudas o piezas nuevas:</b> contacto@piura-ai.org</li>
+    </ul>
+  </div>
+  <div class="foot"><span>Piura AI · Guía de marca</span><span>9</span></div>
+</section>
+
+</body>
+</html>

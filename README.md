@@ -41,6 +41,7 @@ El sitio queda disponible en `http://localhost:4321`.
 | `npm run preview` | Sirve `dist/` localmente para revisar el build                  |
 | `npm run check`   | Revisa tipos y errores de Astro (debe quedar en 0 errores)      |
 | `npm run brand`   | Regenera logos, favicons y la imagen para redes (Open Graph)    |
+| `npm run branding`| Regenera el kit de marca para compartir (`branding/`) y su PDF  |
 | `npm run deploy`  | Compila y publica en Cloudflare Workers                         |
 
 ## Cómo editar el contenido
@@ -82,6 +83,7 @@ En `site.socials`, reemplaza `href: null` por la URL. Las redes sin enlace no se
 ```
 ├── brand/source/          Fuentes de la marca (zorro vectorizado, logo original, tipografía)
 ├── brand/social/          Avatar y logos para GitHub y redes sociales
+├── branding/              Kit de marca para compartir: logos, colores y guía en PDF
 ├── public/                Archivos servidos tal cual: favicons, logos, imagen Open Graph
 ├── scripts/
 │   └── build-brand.mjs    Genera todos los assets de marca
@@ -100,6 +102,7 @@ En `site.socials`, reemplaza `href: null` por la URL. Las redes sin enlace no se
 
 - **Colores:** crema arena `#F6F3EC` de fondo, azul marino `#22384A` para titulares y terracota `#A8502A` como único color de acción. El detalle está en [DESIGN.md](DESIGN.md).
 - **Tipografías:** Space Grotesk para titulares e IBM Plex Sans para el cuerpo, servidas desde el propio sitio.
+- **Kit de marca:** la carpeta [`branding/`](branding/) tiene los logos (horizontal, cuadrado e ícono) en SVG y PNG, para fondo claro y oscuro, a una tinta y con o sin fondo, además de la paleta y la [guía de marca en PDF](branding/Guia-de-marca-Piura-AI.pdf).
 - **Logo:** el zorro andino se vectorizó a partir del logo original. `npm run brand` genera el logo horizontal, la versión para fondo oscuro, el isotipo, los favicons, `og-image.png` (1200×630) y, en `brand/social/`, el avatar cuadrado para la organización de GitHub y redes sociales.
 
 ## SEO
@@ -121,7 +124,7 @@ Para desplegar a mano (requiere `npx wrangler login` con acceso a la cuenta):
 npm run deploy
 ```
 
-El dominio está registrado en GoDaddy y su DNS está delegado a Cloudflare. El correo del dominio se maneja con Zoho Mail; sus registros MX, SPF y DKIM viven en el DNS de Cloudflare.
+El dominio está registrado en GoDaddy y su DNS está delegado a Cloudflare. El correo `contacto@piura-ai.org` se reenvía con Cloudflare Email Routing al Gmail de la comunidad. Cada push a `main` se publica automáticamente.
 
 ## Contribuir
 

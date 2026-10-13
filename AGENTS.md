@@ -9,7 +9,7 @@ Landing estática y SEO friendly de **Piura AI**, la comunidad de inteligencia a
 - **Fuentes self-hosted** con Fontsource: Space Grotesk (titulares) e IBM Plex Sans (cuerpo), solo subset latino.
 - **Imágenes** optimizadas con `astro:assets` (`<Image />`, WebP y `srcset`). Las fuentes originales viven en `src/assets/`.
 - **SEO:** `@astrojs/sitemap`, `robots.txt` generado (`src/pages/robots.txt.ts`), canonical, Open Graph, Twitter Card y JSON-LD `Organization` en `src/layouts/BaseLayout.astro`.
-- **Deploy:** Cloudflare Workers con archivos estáticos (`wrangler.jsonc`, `assets.directory: ./dist`); no hace falta adapter ni código de Worker. `npm run deploy` compila y publica. `www` redirige al dominio principal con una regla de Cloudflare. El dominio está en GoDaddy (cuenta de Juan Alberto) con DNS delegado a Cloudflare; el correo es Zoho Mail. Dominio de producción: `https://piura-ai.org` (valor por defecto de `site` en `astro.config.mjs`). La variable de entorno `SITE_URL` lo sobreescribe si hace falta; canonical, OG, sitemap y robots se derivan de ahí.
+- **Deploy:** Cloudflare Workers con archivos estáticos (`wrangler.jsonc`, `assets.directory: ./dist`); no hace falta adapter ni código de Worker. `npm run deploy` compila y publica. `www` redirige al dominio principal con una regla de Cloudflare. El dominio está en GoDaddy (cuenta de Juan Alberto) con DNS delegado a Cloudflare; `contacto@piura-ai.org` se reenvía con Cloudflare Email Routing al Gmail de la comunidad. Cada push a `main` se publica solo (Workers Builds). Dominio de producción: `https://piura-ai.org` (valor por defecto de `site` en `astro.config.mjs`). La variable de entorno `SITE_URL` lo sobreescribe si hace falta; canonical, OG, sitemap y robots se derivan de ahí.
 
 ## Comandos
 
@@ -20,6 +20,7 @@ npm run check      # astro check (tipos y diagnósticos): debe quedar en 0 error
 npm run build      # genera dist/
 npm run preview    # sirve dist/
 npm run brand      # regenera logos, favicons y OG image desde brand/source/
+npm run branding   # regenera el kit de marca para compartir (carpeta branding/) y su guía en PDF
 npm run deploy     # astro build + wrangler deploy a Cloudflare
 ```
 
@@ -29,8 +30,11 @@ Después de agregar o cambiar integraciones, correr `npx astro sync`.
 
 ```
 brand/social/            Avatar y logos para GitHub/redes (generados)
-brand/source/            Fuentes de marca: zorro vectorizado (potrace), logo original, Space Grotesk 700
-scripts/build-brand.mjs  Genera todos los assets de marca (ver "Marca")
+brand/source/            Fuentes de marca: zorro vectorizado (potrace), logo original, Space Grotesk 700, guia-de-marca.html
+branding/                Kit de marca para compartir con el equipo (generado; ver "Marca")
+scripts/brand-lib.mjs    Piezas compartidas: colores, zorro y composición de logos
+scripts/build-brand.mjs  Genera los assets de marca de la web (ver "Marca")
+scripts/build-branding-kit.mjs  Genera el kit de branding/ y la guía en PDF
 public/brand/            Logos SVG/PNG generados (horizontal, versión sobre oscuro, isotipo)
 public/                  favicon.ico/.svg, apple-touch-icon, icon-192/512, og-image.png, site.webmanifest
 src/data/site.ts         TODO el contenido editable: textos, eventos, trayectoria, fundadores, aliados, enlaces
@@ -51,7 +55,7 @@ CLAUDE.md                Solo importa este archivo (@AGENTS.md). Es un archivo r
 - El contenido se edita en `src/data/site.ts`, no dentro de los componentes.
 - `joinUrl` es el grupo de WhatsApp de la comunidad; todos los botones "Unirse a la comunidad" apuntan ahí y abren en pestaña nueva.
 - Fundadores: el orden de `founders` en `site.ts` es el orden en pantalla. Para agregar a alguien, guardar su foto de LinkedIn en `src/assets/team/<nombre-apellido>.jpg` (recortada al rostro si es un plano abierto), importarla y añadir la entrada con rol (en inglés, como en LinkedIn) y bio corta en español. La grilla termina siempre con la tarjeta "Súmate a Piura AI".
-- Los enlaces pendientes están marcados con `TODO` en `site.ts`: las redes sociales (`href: null` las oculta) y `codeOfConductUrl`. El correo `contacto@piura-ai.org` viene del boceto; confirmar que el buzón exista.
+- Los enlaces pendientes están marcados con `TODO` en `site.ts`: las redes sociales (`href: null` las oculta) y `codeOfConductUrl`. El correo `contacto@piura-ai.org` es un reenvío (solo recibe).
 
 ## Reglas de diseño
 
@@ -69,7 +73,8 @@ CLAUDE.md                Solo importa este archivo (@AGENTS.md). Es un archivo r
 - Variantes: `piura-ai-logo.svg` (fondo claro), `piura-ai-logo-on-dark.svg` (footer navy), `piura-ai-mark.svg` (solo zorro). El favicon y los íconos de app usan solo el zorro.
 - `og-image.png` (1200×630) es crema con el logo, la tagline y las ondas del hero.
 - `brand/social/`: `piura-ai-avatar.png` (1000×1000, zorro sobre crema a sangre, apto para recorte circular) para la org de GitHub y redes, más el logo horizontal en PNG (2000px) y SVG.
-- Si cambia el logo oficial, reemplazar `brand/source/fox-traced.svg` (o volver a trazarlo) y ajustar `FOX` (bounding box) en el script.
+- **Kit para compartir (`branding/`):** `npm run branding` genera el logo horizontal, el cuadrado (zorro arriba, texto abajo) y el ícono, cada uno en cuatro versiones (`color-fondo-claro`, `color-fondo-oscuro`, `una-tinta-azul`, `una-tinta-blanco`) y tres formatos (`svg/`, `png-transparente/`, `png-con-fondo/`), más avatares en `redes/` y la paleta en `colores/`. La guía `Guia-de-marca-Piura-AI.pdf` se imprime con Chrome headless desde `brand/source/guia-de-marca.html`; si cambian colores, tipografías o reglas, editar ese HTML y `branding/LEEME.md` (este último se mantiene a mano).
+- Si cambia el logo oficial, reemplazar `brand/source/fox-traced.svg` (o volver a trazarlo), ajustar `FOX` (bounding box) en `scripts/brand-lib.mjs` y correr `npm run brand` y `npm run branding`.
 
 ## Skills del proyecto
 

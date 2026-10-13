@@ -1,0 +1,15 @@
+/* Paleta de Piura AI */
+:root {
+  --piura-ai-terracota: #a8502a; /* Botones, enlaces y acentos */
+  --piura-ai-azul-marino: #22384a; /* Titulares y fondos oscuros */
+  --piura-ai-crema: #f6f3ec; /* Fondo base */
+  --piura-ai-blanco: #ffffff; /* Tarjetas y secciones alternas */
+  --piura-ai-tinta: #1f2e38; /* Texto principal */
+  --piura-ai-gris-azulado: #4a5a63; /* Texto secundario */
+  --piura-ai-linea: #e7e2d5; /* Bordes y divisores */
+  --piura-ai-terracota-suave: #f0b79b; /* Acentos sobre azul marino */
+  --piura-ai-logo-naranja: #cb5f31; /* Solo logo, sobre fondo claro */
+  --piura-ai-logo-azul: #3b5973; /* Solo logo, sobre fondo claro */
+  --piura-ai-logo-naranja-claro: #e07a4b; /* Solo logo, sobre fondo oscuro */
+  --piura-ai-logo-azul-claro: #9fb9cf; /* Solo logo, sobre fondo oscuro */
+}

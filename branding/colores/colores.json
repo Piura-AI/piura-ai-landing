@@ -1,0 +1,50 @@
+{
+  "terracota": {
+    "hex": "#A8502A",
+    "uso": "Botones, enlaces y acentos"
+  },
+  "azul-marino": {
+    "hex": "#22384A",
+    "uso": "Titulares y fondos oscuros"
+  },
+  "crema": {
+    "hex": "#F6F3EC",
+    "uso": "Fondo base"
+  },
+  "blanco": {
+    "hex": "#FFFFFF",
+    "uso": "Tarjetas y secciones alternas"
+  },
+  "tinta": {
+    "hex": "#1F2E38",
+    "uso": "Texto principal"
+  },
+  "gris-azulado": {
+    "hex": "#4A5A63",
+    "uso": "Texto secundario"
+  },
+  "linea": {
+    "hex": "#E7E2D5",
+    "uso": "Bordes y divisores"
+  },
+  "terracota-suave": {
+    "hex": "#F0B79B",
+    "uso": "Acentos sobre azul marino"
+  },
+  "logo-naranja": {
+    "hex": "#CB5F31",
+    "uso": "Solo logo, sobre fondo claro"
+  },
+  "logo-azul": {
+    "hex": "#3B5973",
+    "uso": "Solo logo, sobre fondo claro"
+  },
+  "logo-naranja-claro": {
+    "hex": "#E07A4B",
+    "uso": "Solo logo, sobre fondo oscuro"
+  },
+  "logo-azul-claro": {
+    "hex": "#9FB9CF",
+    "uso": "Solo logo, sobre fondo oscuro"
+  }
+}
