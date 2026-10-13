@@ -1,5 +1,5 @@
 # Design System: Piura AI, landing
-**Project ID:** No aplica (no hay proyecto en Stitch). Se sintetizó a partir de la referencia visual `Piura AI — sitio web (referencia visual) – home.html` (boceto de Juan Alberto Quintana, lienzo de 1440px) y del logo oficial del zorro andino.
+**Project ID:** No aplica (no hay proyecto en Stitch). Se sintetizó a partir de la referencia visual `Piura AI — sitio web (referencia visual) – home.html` (boceto de Juan Alberto Quintana, lienzo de 1440px) y del logo oficial del zorro costeño.
 
 ## 1. Visual Theme & Atmosphere
 
@@ -12,7 +12,7 @@ La estética es **humana y comunitaria**, no futurista: nada de gradientes neón
 - Un solo color de acción (terracota) usado con disciplina.
 - Íconos de trazo fino (Lucide, 1.5px) en azul marino; nunca emojis.
 - Fotos reales de personas y eventos por encima de cualquier ilustración genérica.
-- Tono sereno y confiable, con detalles regionales (Piura, zorro andino).
+- Tono sereno y confiable, con detalles regionales (Piura, zorro costeño).
 
 ## 2. Color Palette & Roles
 

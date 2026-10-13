@@ -1,6 +1,6 @@
 # AGENTS.md: Piura AI landing
 
-Landing estática y SEO friendly de **Piura AI**, la comunidad de inteligencia artificial de Piura, Perú. Se construyó a partir del boceto de Juan Alberto Quintana (Claude Design) y del logo oficial del zorro andino.
+Landing estática y SEO friendly de **Piura AI**, la comunidad de inteligencia artificial de Piura, Perú. Se construyó a partir del boceto de Juan Alberto Quintana (Claude Design) y del logo oficial del zorro costeño.
 
 ## Stack
 
